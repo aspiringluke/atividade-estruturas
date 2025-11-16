@@ -3,8 +3,11 @@ import { CircularDoubleLinkedList } from "./CircularDoubleLinkedList.js";
 import type { ILinkedList } from "./interfaces/ILinkedList.js";
 import type { IDoubleLinkedList } from "./interfaces/IDoubleLinkedList.js";
 
-let testarLec = true;
-// let testarLec = false;
+// Alterne os comentários (ou altere o valor)
+// para testar cada lista
+
+// let testarLec = true;
+let testarLec = false;
 
 function info(list: ILinkedList<any> | IDoubleLinkedList<any>, index: number = 0)
 {
