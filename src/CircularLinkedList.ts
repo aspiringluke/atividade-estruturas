@@ -93,8 +93,9 @@ export class CircularLinkedList<T> implements ILinkedList<T>, Iterable<T>
 
 		let prev = this.head;
 		let curr = this.head.next;
+		let i = this.length;
 
-		while(curr){
+		while(curr && i>0){
 			if(curr.value === value){
 				prev.next = curr.next;
 				if(curr === this.tail)
@@ -107,6 +108,7 @@ export class CircularLinkedList<T> implements ILinkedList<T>, Iterable<T>
 			}
 			prev = curr;
 			curr = curr.next;
+			i--;
 		}
 		return false;
 	}
@@ -132,7 +134,7 @@ export class CircularLinkedList<T> implements ILinkedList<T>, Iterable<T>
 		// No entanto, para facilitar a visualização da
 		// circularidade, deixarei o loop executar duas vezes
 		// let i = 0;
-		let i = this.length-1 * 2;
+		let i = this.length * 2;
 		return {
 			next : () : IteratorResult<T> => {
 				if(curr && i > 0){

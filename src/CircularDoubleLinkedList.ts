@@ -101,7 +101,8 @@ export class CircularDoubleLinkedList<T> implements IDoubleLinkedList<T>, Iterab
 		}
 
 		let curr = this.head.next;
-		while(curr){
+		let i = this.length;
+		while(curr && i>0){
 			if(curr.value === value){
 				const prev = curr.prev!;
 				const next = curr.next;
@@ -119,6 +120,7 @@ export class CircularDoubleLinkedList<T> implements IDoubleLinkedList<T>, Iterab
 				return true;
 			}
 			curr = curr.next;
+			i--;
 		}
 		return false;
 	}
@@ -145,12 +147,13 @@ export class CircularDoubleLinkedList<T> implements IDoubleLinkedList<T>, Iterab
 
 	[Symbol.iterator](): Iterator<T> {
 		let curr = this.head;
-		let i = this.length-1 * 2;
+		let i = this.length * 2;
 		return {
 			next : () : IteratorResult<T> => {
 				if(curr && i > 0){
 					const value = curr.value;
 					curr = curr.next;
+					i--;
 					return {value, done: false}
 				}
 				return {value: undefined as any, done: true}
